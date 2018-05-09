@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>Demo</title>
+        <!-- autoInclude: css !-->
+    </head>
+    <body ng-app="demo">
+        <div class="container" >
+            <div class="panel panel-default">
+              <div class="panel-body">
+                Demo pods: IT001E01581652, IT001E01443713
+
+              </div>
+            </div>
+            <div ng-controller="SearchCtrl" class="subcontainer">
+                <div class="row">
+                    <div class="form-group">
+                        <label for="pod" class="col-sm-2 control-label">Pod</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="pod" placeholder="Pod" ng-model="pod">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-check form-check-inline" ng-repeat="tab in tabs">
+                        <input class="form-check-input" type="checkbox" id="{{tab}}" name="{{tab}}" value="{{tab}}" ng-checked="tabselection.indexOf(tab) > -1" ng-click="toggleSelection(tab)" />
+                        <label class="form-check-label" for="{{tab}}">{{tab}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <button ng-click=notify() class="btn btn-default">Search</button>
+                </div>
+                <div class="row">
+                    <div ng-controller="PodTabCtrl">
+                        <div ng-if="showTabs()">
+                            <ul class="nav nav-tabs marginBottom" id="myTab" role="tablist">
+                                <li class="nav-item" ng-repeat="tab in $parent.tabs()">
+                                    <a class="nav-link" ng-class="{'active' : $first}" id="{{tab}}-tab" data-toggle="tab" href="#{{tab}}" role="tab" aria-controls="{{tab}}" aria-selected="{{$first}}">{{tab}}</a><button class="close closeTab" type="button" ng-click="$parent.podData.removePod(tab);">×</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <!-- POD tab  -->
+                                <div class="tab-pane fade" ng-class="{'show active' : $index==0}" id="{{tab}}" role="tabpanel" aria-labelledby="{{tab}}-tab" ng-repeat="tab in $parent.tabs() track by $index">
+                                    <p>
+                                        DATA {{tab}}: {{$parent.podData.getPodData(tab)}}
+                                    </p>
+                                    <!-- Satellite tabs -->
+                                    <div ng-controller="SubTabsCtrl">
+                                        <ul class="nav nav-tabs" id="mySubTab" role="tablist">
+                                            <li class="nav-item" ng-repeat="tab in tabproxy.getActiveContexts()">
+                                                <a class="nav-link" ng-class="{'active' : $first}" id="{{$parent.tab}}_{{tab}}-tab" data-toggle="tab" href="#{{$parent.tab}}_{{tab}}_tab" role="tab" aria-controls="{{$parent.tab}}_{{tab}}_tab" aria-selected="{{$first}}">{{tab}}</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="mySubTabContent">
+                                            <!-- UI tab  -->
+                                            <div class="tab-pane fade" ng-class="{'show active' : $index==0}" id="{{$parent.tab}}_{{tab}}_tab" role="tabpanel" aria-labelledby="{{$parent.tab}}_{{tab}}-tab" ng-repeat="tab in tabproxy.getActiveContexts() track by $index">
+                                                <p>
+                                                    DATA {{dataproxy.getPodContextData($parent.tab,tab)}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>
+        <!-- autoInclude: jsLib !-->
+        <!-- autoInclude: jsApp !-->
+
+    <!-- inject:js -->
+    <!-- endinject -->
+
+       
+    </body>
+</html>
