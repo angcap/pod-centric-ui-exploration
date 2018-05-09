@@ -1,7 +1,7 @@
 (function() {
     'use-strict';
     // First Level Controller
-    angular.module('demo').controller('SearchCtrl' ,['$scope','NotifyingService', 'PodContextsService', 'MetroExaDataService',
+    angular.module('demo').controller('SearchCtrl', ['$scope', 'NotifyingService', 'PodContextsService', 'MetroExaDataService',
         function($scope, NotifyingService, PodContextsService, MetroExaDataService) {
 
             // tabs
@@ -22,14 +22,21 @@
 
             // function attached to search button, emits an event for POD and activated contexts (application Tabs)
             $scope.notify = function() {
-                
-                console.log('emitting', NotifyingService.SEARCH_EVENT);
 
-                NotifyingService.notify(NotifyingService.SEARCH_EVENT, {
-                    pod: $scope.pod,
-                    contexts: $scope.tabselection
-                });
-
+               
+                var pods = [];
+                if ($scope.pod.indexOf(',') !== -1) {
+                    pods = $scope.pod.replace(/ /g,'').split(',');
+                } else {
+                    pods.push($scope.pod);
+                }
+                for (var i = pods.length - 1; i >= 0; i--) {
+                    console.log('emitting', NotifyingService.SEARCH_EVENT, 'for pod',pods[i]);
+                    NotifyingService.notify(NotifyingService.SEARCH_EVENT, {
+                        pod: pods[i],
+                        contexts: $scope.tabselection
+                    });
+                }
             };
         }
     ]);

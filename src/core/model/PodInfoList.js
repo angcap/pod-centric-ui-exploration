@@ -15,6 +15,7 @@
             add: function(data) {
                 var podinfo = PodInfo.build(data);
                 podinfolist[podinfo.pod] = podinfo;
+                console.log('added info for pod',podinfo.pod);
             },
             removePod: function(pod) {
                 delete podinfolist[pod];
