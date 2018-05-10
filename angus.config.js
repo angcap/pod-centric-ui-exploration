@@ -14,7 +14,7 @@ module.exports = {
             'bootstrap#4.0.0',
             'angular#1.6',
             'jquery#3.1.1',
-            'angcap/ng-vkthread#2.5.0-3',
+            'parmantolab/ng-vkthread#2.5.0-3',
             'moment'
         ],
         /*  filesNeeded - A list of files your app will actually use from the bower packages you installed.
@@ -31,8 +31,8 @@ module.exports = {
                 'angular/angular.js',
                 'jquery/dist/jquery.js',
                 'bootstrap/dist/js/bootstrap.bundle.js',
-                 'ng-vkThread/vkthread/vkthread.js',
-               'ng-vkThread/vkthread/worker.js',
+                'ng-vkThread/vkthread/vkthread.js',
+                'ng-vkThread/vkthread/worker.js',
                 'moment/min/moment.min.js'
             ],
 
