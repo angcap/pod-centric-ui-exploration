@@ -6,6 +6,5 @@ The app proof the use of
 - a message based communication model to request the data and react when it is gathered.
 
 After several month of work the base idea evolved into the core of a production application, 
-here shown from a component perspective with an UML diagram
-![component diagram](images/metroexa_component_diagram.jpg?raw=true Title="componet diagram")
+here shown from a component perspective with an UML [component diagram](images/metroexa_component_diagram.jpg?raw=true Title="componet diagram")
 
