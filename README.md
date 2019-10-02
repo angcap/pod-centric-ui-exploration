@@ -7,5 +7,5 @@ The app proof the use of
 
 After several month of work the base idea evolved into the core of a production application, 
 here shown from a component perspective with an UML diagram
-![component diagram](https://github.com/angcap/pod-centric-ui-exploration/master/images/metroexa_component_diagram.jpg)
+![component diagram](images/metroexa_component_diagram.jpg?raw=true Title="componet diagram")
 
