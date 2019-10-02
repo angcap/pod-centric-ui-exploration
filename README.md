@@ -5,7 +5,8 @@ The app proof the use of
 - a singleton service to hold the data and 
 - a message based communication model to request the data and react when it is gathered.
 
-After several month of work the base idea evolved into the core of a production application, 
-here shown from a component perspective with an UML component diagram
+After few month of work, with the great contribution from @vacammar, the base idea evolved into the core of a production application, 
+here shown from a component perspective with an UML component diagram.
+
 ![Component Diagram](images/metroexa_component_diagram.png)
 
